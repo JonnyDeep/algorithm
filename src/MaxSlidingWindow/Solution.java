@@ -40,7 +40,7 @@ public class Solution {
         Solution s = new Solution();
         int[] ints = s.maxSlidingWindow(nums, 4);
         for (int elem :
-                   ints ) {
+                ints ) {
             System.out.printf("%d ",elem);
         }
     }
