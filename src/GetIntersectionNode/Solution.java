@@ -7,42 +7,25 @@ import java.util.Set;
 
 public class Solution {
 
+    /**
+     * 169
+     * @param headA
+     * @param headB
+     * @return
+     */
+
     public ListNode getIntersectionNode(ListNode headA,ListNode headB){
-        Set<ListNode> nodes = new HashSet<>();
-        int countA = 0;
-        int countB = 0;
-        while (headA!=null && headB!=null){
-            if(nodes.contains(headA)){
-                return headA;
-            }
-            nodes.add(headA);
-            headA=headA.next;
-            countA++;
-            if(nodes.contains(headB)){
-                return headB;
-            }
-            nodes.add(headB);
-            headB = headB.next;
-            countB++;
-        }
-        while (headA!=null){
-            if(nodes.contains(headA)){
-                return headA;
-            }
-            nodes.add(headA);
-            headA =headA.next;
-            countA++;
+        if(headA==null||headB==null){
+            return null;
         }
 
-        while (headB!=null){
-            if(nodes.contains(headB)){
-                return headB;
-            }
-            nodes.add(headB);
-            headB = headB.next;
-            countB++;
+        ListNode pA = headA;
+        ListNode pB = headB;
+        while (pA!=pB){
+            pA=pA==null?headB:pA.next;
+            pB=pB==null?headA:pB.next;
         }
-        return null;
+        return pA;
     }
 
     public static void main(String[] args) {
